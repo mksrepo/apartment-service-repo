@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- Default Module Version -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Maven Coordinate -->
+	<groupId>com.apart</groupId>
+	<artifactId>apartment-parent</artifactId>
+	<version>1.0-SNAPSHOT</version>
+
+	<!-- Packaging Information -->
+	<packaging>pom</packaging>
+
+	<!-- Project Information -->
+	<name>apartment-parent</name>
+	<description>Apartment management service</description>
+	<url>http://www.apartment.com</url>
+
+	<!-- Global Properties -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.configuration.library.skiptest>false</maven.configuration.library.skiptest>
+		<maven.pcf.plugin.testmessage>from Maven World</maven.pcf.plugin.testmessage>
+	</properties>
+
+	<!-- Plugin Repositories -->
+	<pluginRepositories>
+
+		<!-- PCF Repository -->
+		<pluginRepository>
+			<id>repository.springframework.maven.milestone</id>
+			<name>Spring Framework Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- Dependency Descriptions -->
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- Spring Boot Dependency -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<type>pom</type>
+				<version>2.0.2.RELEASE</version>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+
+		<!-- Test Dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Plugin Description -->
+	<build>
+		<plugins>
+
+			<!-- Custom PCF Plugin -->
+			<plugin>
+				<groupId>com.mvn.jpcf</groupId>
+				<artifactId>maven-pcf-plugin</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<configuration>
+					<msg>${maven.pcf.plugin.testmessage}</msg>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>hello</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Module Details -->
+	<modules>
+		<module>apartment-user-service</module>
+		<module>apartment-library</module>
+	</modules>
+
+</project>
