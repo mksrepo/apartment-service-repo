@@ -37,6 +37,7 @@
 			<artifactId>apartment-library</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
 	</dependencies>
 
 	<!-- Build Information -->
@@ -44,12 +45,15 @@
 
 		<!-- Plugins Information -->
 		<plugins>
-		
+
 			<!-- PCF Plugin -->
 			<plugin>
 				<groupId>org.cloudfoundry</groupId>
 				<artifactId>cf-maven-plugin</artifactId>
 				<version>1.0.0.M1</version>
+				<configuration>
+					<skipTests>${maven.configuration.userservice.skiptest}</skipTests>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,14 +1,14 @@
 /*
- * Application.java
+ * ApplicationStarter.java
  * 
  * Description: application starter
  * 
  * Maintenance History
  * YYMMDD	Who					Reason
  * ==================================================================
- * 190104	Mrinmay Santra		Initial Version
+ * 190131	Surya Yadav		Initial Version
  */
-package com.aprt;
+package com.aprt.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,22 +20,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>
  * <b>Note:</b> This class doesn't carries out any requirement
  *
- * @author Mrinmay Santra
+ * @author Surya Yadav
  * @version 1.0
  * @since 2019-01-34
  */
 @SpringBootApplication
-public class Application {
+public class ApplicationStarter {
 
 	/**
 	 * This method is the starting point of the application.
 	 * 
-	 * @author Mrinmay Santra
+	 * @author Surya Yadav
 	 * @param args
 	 * @return Nothing
 	 * @exception Nothing
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(ApplicationStarter.class, args);
 	}
 }

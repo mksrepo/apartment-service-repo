@@ -23,7 +23,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.configuration.library.skiptest>false</maven.configuration.library.skiptest>
+		<maven.configuration.library.skiptest>true</maven.configuration.library.skiptest>
+		<maven.configuration.userservice.skiptest>true</maven.configuration.userservice.skiptest>
 		<maven.pcf.plugin.testmessage>from Maven World</maven.pcf.plugin.testmessage>
 	</properties>
 
@@ -59,6 +60,38 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Spring JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- DB Dependency -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Swagger Dependency -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		
+		<!-- Apartment Library Dependency -->
+		<dependency>
+			<groupId>com.apart</groupId>
+			<artifactId>apartment-library</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 
