@@ -1,29 +1,9 @@
-/*
- * ApplicationStarter.java
- * 
- * Description: application starter
- * 
- * Maintenance History
- * YYMMDD	Who					Reason
- * ==================================================================
- * 190131	Surya Yadav		Initial Version
- */
 package com.aprt.user.service;
 
 import java.util.List;
 
 import com.aprt.user.model.User;
 
-/**
- * <h1>Application Starter</h1> This class is responsible for triggering Spring
- * Boot application by loading all resources and context.
- * <p>
- * <b>Note:</b> This class doesn't carries out any requirement
- *
- * @author Surya Yadav
- * @version 1.0
- * @since 2019-01-34
- */
 public interface UserService {
 
 	/**
@@ -48,7 +28,7 @@ public interface UserService {
 	 * @param String
 	 *            userId
 	 */
-	public void deleteUserById(String userId);
+	public void deleteUserByUserName(String userName);
 
 	/**
 	 * Method to update user
@@ -58,7 +38,7 @@ public interface UserService {
 	 * @param String
 	 *            userId
 	 */
-	public void updateUser(User userDetails, String userId);
+	public void updateUser(User userDetails);
 
 	/**
 	 * Method to return user data by selected userId
@@ -67,6 +47,13 @@ public interface UserService {
 	 *            userId
 	 * @return UserModelBean userModelBean
 	 */
-	public User findById(String userId);
+	public User findByUserName(String userName);
+
+	/**
+	 * @param userId
+	 * @param password
+	 * @return
+	 */
+	public User validateUser(String userName, String password);
 
 }

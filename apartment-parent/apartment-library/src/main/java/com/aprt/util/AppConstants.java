@@ -27,8 +27,6 @@ import java.util.Set;
 public class AppConstants {
 
 	// Entity - Constants
-	public static final String USER_ENTITY = "userModel";
-
 	public static final String STATUS_CODE = "200";
 	public static final String MESSAGE = "Your Record Is Successfully Created";
 

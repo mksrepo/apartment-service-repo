@@ -1,16 +1,7 @@
-/*
- * UserServiceImpl.java
- * 
- * Description: user service implementation class
- * 
- * Maintenance History
- * YYMMDD	Who					Reason
- * ==================================================================
- * 190131	Surya Yadav		Initial Version
- */
 package com.aprt.user.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -18,21 +9,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aprt.user.model.User;
 import com.aprt.user.entity.UserEntity;
+import com.aprt.user.model.User;
 import com.aprt.user.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * <h1>Application Starter</h1> This class is to provide implementation logic
- * for user service.
- * <p>
- * <b>Note:</b> This class doesn't carries out any requirement
- *
- * @author Surya Yadav
- * @version 1.0
- * @since 2019-01-34
- */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -62,23 +43,32 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public void deleteUserById(String userId) {
-		userRepo.updateDeleteFlag(userId);
+	public void deleteUserByUserName(String userName) {
+		String userStatus = "Y" + new Date().getTime();
+		userRepo.updateDeleteFlag(userName, userStatus);
 
 	}
 
 	@Transactional
 	@Override
-	public void updateUser(User userDetails, String userId) {
-		userRepo.updateUser(userId, userDetails.getUserName(), userDetails.getUserPassword(),
+	public void updateUser(User userDetails) {
+		userRepo.updateUser(userDetails.getUserKey().getUserName(), userDetails.getUserPassword(),
 				userDetails.getUserEmail(), userDetails.getUserMobile(), userDetails.getUserRole());
 	}
 
 	@Override
-	public User findById(String userId) {
+	public User findByUserName(String userName) {
 		ObjectMapper mapper = new ObjectMapper();
-		User details = mapper.convertValue(userRepo.findOne(Integer.parseInt(userId)), User.class);
+		User details = mapper.convertValue(userRepo.findOne(userName), User.class);
 		return details;
+	}
+
+	@Override
+	public User validateUser(String userName, String password) {
+		ObjectMapper mapper = new ObjectMapper();
+		User details = mapper.convertValue(userRepo.findByCredential(userName, password), User.class);
+		return details;
+
 	}
 
 }

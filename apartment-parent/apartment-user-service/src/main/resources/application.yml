@@ -1,17 +1,20 @@
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring:
-
-  profiles: default
-  
   datasource:
-    platform: h2
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:~/tttdb/tracker_db;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
-  h2:
-    console:
-      enabled: true
-      
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/apartment_db?useSSL=false
+    username: root
+    password: password1$
+    initialization-mode: always
+
+
+## Hibernate Properties
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
   jpa:
-    show-sql: true
-    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
     hibernate:
       ddl-auto: update
