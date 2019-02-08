@@ -1,8 +1,17 @@
-package com.aprt.user.model;
+package com.apartment.user.model;
 
 public class ValidateUserResponseBean {
+	private User user;
 	private boolean isValid;
 	private String userRole;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public boolean isValid() {
 		return isValid;

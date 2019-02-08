@@ -1,8 +1,8 @@
-package com.aprt.user.service;
+package com.apartment.user.service;
 
 import java.util.List;
 
-import com.aprt.user.model.User;
+import com.apartment.user.model.User;
 
 public interface UserService {
 

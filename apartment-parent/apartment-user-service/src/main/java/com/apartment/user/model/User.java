@@ -1,36 +1,31 @@
-package com.aprt.user.entity;
+package com.apartment.user.model;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-import com.aprt.user.util.UserConstants;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
-@Table(name = UserConstants.USER_ENTITY)
-public class UserEntity {
+import com.apartment.user.entity.UserKey;
 
-	@EmbeddedId
+@SuppressWarnings("deprecation")
+public class User {
+
 	private UserKey userKey;
 
-	@Column(name = UserConstants.USER_PASSWORD)
+	@NotNull
 	private String userPassword;
 
-	@Column(name = UserConstants.USER_EMAIL)
+	@Email
 	private String userEmail;
-
-	@Column(name = UserConstants.USER_MOBILE)
+	@NotEmpty
 	private String userMobile;
-
-	@Column(name = UserConstants.USER_ROLE)
+	@NotNull
 	private String userRole;
 
-	public UserEntity() {
-
+	public User() {
 	}
 
-	public UserEntity(String userPassword, String userEmail, String userMobile, String userRole) {
+	public User(String userPassword, String userEmail, String userMobile, String userRole) {
 		super();
 		this.userPassword = userPassword;
 		this.userEmail = userEmail;
@@ -80,7 +75,7 @@ public class UserEntity {
 
 	@Override
 	public String toString() {
-		return "UserModel [userPassword=" + userPassword + ", userKey=" + userKey + ", userEmail=" + userEmail
+		return "UserModelDetails [userkey=" + userKey + ", userPassword=" + userPassword + ", userEmail=" + userEmail
 				+ ", userMobile=" + userMobile + ", userRole=" + userRole + "]";
 	}
 

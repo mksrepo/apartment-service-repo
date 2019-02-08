@@ -1,4 +1,4 @@
-package com.aprt.user.exception;
+package com.apartment.user.exception;
 
 public class ErrorDetails {
 

@@ -1,4 +1,4 @@
-package com.aprt.user.service;
+package com.apartment.user.service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,9 +9,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aprt.user.entity.UserEntity;
-import com.aprt.user.model.User;
-import com.aprt.user.repository.UserRepository;
+import com.apartment.user.entity.UserEntity;
+import com.apartment.user.model.User;
+import com.apartment.user.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service

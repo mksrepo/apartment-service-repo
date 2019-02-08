@@ -1,9 +1,9 @@
-package com.aprt.user.config;
+package com.apartment.user.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.aprt.util.AppConstants;
+import com.apartment.util.AppConstants;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -26,7 +26,7 @@ public class SwaggerConfiguration {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).groupName("user-service").apiInfo(getApiInfo()).select()
-				.apis(RequestHandlerSelectors.basePackage("com.aprt.user")).paths(PathSelectors.any()).build()
+				.apis(RequestHandlerSelectors.basePackage("com.apartment.user")).paths(PathSelectors.any()).build()
 				.useDefaultResponseMessages(false).produces(AppConstants.DEFAULT_PRODUCES_AND_CONSUMES)
 				.consumes(AppConstants.DEFAULT_PRODUCES_AND_CONSUMES);
 	}

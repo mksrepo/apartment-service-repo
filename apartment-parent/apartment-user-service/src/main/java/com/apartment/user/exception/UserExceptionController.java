@@ -1,4 +1,4 @@
-package com.aprt.user.exception;
+package com.apartment.user.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

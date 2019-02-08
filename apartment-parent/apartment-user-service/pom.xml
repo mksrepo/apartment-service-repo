@@ -37,7 +37,6 @@
 			<artifactId>apartment-library</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
 	</dependencies>
 
 	<!-- Build Information -->

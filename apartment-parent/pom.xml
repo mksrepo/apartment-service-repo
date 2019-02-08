@@ -86,13 +86,6 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
-		
-		<!-- Apartment Library Dependency -->
-		<dependency>
-			<groupId>com.apart</groupId>
-			<artifactId>apartment-library</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 	</dependencies>
 
 	<!-- Plugin Description -->

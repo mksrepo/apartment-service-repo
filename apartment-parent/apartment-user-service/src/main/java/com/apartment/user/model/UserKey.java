@@ -1,4 +1,4 @@
-package com.aprt.user.model;
+package com.apartment.user.model;
 
 import javax.validation.constraints.NotNull;
 

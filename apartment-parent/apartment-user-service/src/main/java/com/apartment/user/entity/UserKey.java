@@ -1,11 +1,11 @@
-package com.aprt.user.entity;
+package com.apartment.user.entity;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import com.aprt.user.util.UserConstants;
+import com.apartment.user.util.UserConstants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Embeddable

@@ -1,4 +1,4 @@
-package com.aprt.user.util;
+package com.apartment.user.util;
 
 public class UserConstants {
 
