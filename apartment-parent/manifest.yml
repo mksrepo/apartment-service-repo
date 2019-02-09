@@ -1,0 +1,9 @@
+applications:
+- name: ams-user-service
+  memory: 1G
+  random-route: true
+  path: /Users/mrinmaysantra/git/apartment-service-repo/apartment-parent/apartment-user-service/target/apartment-user-service-1.0-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud,mysql
+  services:
+  - ams-mysql-service
