@@ -28,31 +28,14 @@
 		<maven.pcf.plugin.testmessage>from Maven World</maven.pcf.plugin.testmessage>
 	</properties>
 
-	<!-- Plugin Repositories -->
-	<pluginRepositories>
-
-		<!-- PCF Repository -->
-		<pluginRepository>
-			<id>repository.springframework.maven.milestone</id>
-			<name>Spring Framework Maven Milestone Repository</name>
-			<url>http://maven.springframework.org/milestone</url>
-		</pluginRepository>
-	</pluginRepositories>
-
-	<!-- Dependency Descriptions -->
-	<dependencyManagement>
-		<dependencies>
-
-			<!-- Spring Boot Dependency -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<type>pom</type>
-				<version>2.0.2.RELEASE</version>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+	<!-- Spring Boot POM configuration  -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.4.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	
 	<dependencies>
 
 		<!-- Test Dependency -->
@@ -68,7 +51,7 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!--  DB Dependency -->
+		<!-- DB Dependency -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -87,30 +70,6 @@
 			<version>2.9.2</version>
 		</dependency>
 	</dependencies>
-
-	<!-- Plugin Description -->
-	<build>
-		<plugins>
-
-			<!-- Custom PCF Plugin -->
-			<plugin>
-				<groupId>com.mvn.jpcf</groupId>
-				<artifactId>maven-pcf-plugin</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-				<configuration>
-					<msg>${maven.pcf.plugin.testmessage}</msg>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>hello</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 	<!-- Module Details -->
 	<modules>
