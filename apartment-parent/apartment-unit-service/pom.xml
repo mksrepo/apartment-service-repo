@@ -18,10 +18,6 @@
 	<!-- Packaging Information -->
 	<packaging>jar</packaging>
 
-	<properties>
-		<start-class>com.apartment.user.ApplicationStarter</start-class>
-	</properties>
-
 	<!-- Dependency Information -->
 	<dependencies>
 
@@ -47,4 +43,6 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+
+	
 </project>

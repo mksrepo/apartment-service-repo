@@ -28,14 +28,14 @@
 		<maven.pcf.plugin.testmessage>from Maven World</maven.pcf.plugin.testmessage>
 	</properties>
 
-	<!-- Spring Boot POM configuration  -->
+	<!-- Spring Boot POM configuration -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	
+
 	<dependencies>
 
 		<!-- Test Dependency -->
@@ -71,10 +71,22 @@
 		</dependency>
 	</dependencies>
 
+	<!-- Build Information -->
+	<build>
+		<plugins>
+
+			<!-- Maven Spring Boot JAR Builder -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 	<!-- Module Details -->
 	<modules>
 		<module>apartment-user-service</module>
 		<module>apartment-library</module>
+		<module>apartment-unit-service</module>
 	</modules>
 
 </project>

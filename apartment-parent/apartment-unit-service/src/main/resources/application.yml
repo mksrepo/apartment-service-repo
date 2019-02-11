@@ -1,0 +1,28 @@
+server:
+      port: 8077
+    
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/apartment_db?useSSL=false
+    username: root
+    password: password1$
+    initialization-mode: always
+
+
+## Hibernate Properties
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+    hibernate:
+      ddl-auto: update
+      
+logging:
+  level:
+    root: INFO
