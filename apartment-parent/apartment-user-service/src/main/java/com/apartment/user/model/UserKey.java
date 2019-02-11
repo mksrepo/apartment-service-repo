@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 
 public class UserKey {
 
-	@NotNull(message = "name must not be blank!")
+	@NotNull(message = "Name must not be blank!")
 	private String userName;
 
 	private String userStatus = "N";

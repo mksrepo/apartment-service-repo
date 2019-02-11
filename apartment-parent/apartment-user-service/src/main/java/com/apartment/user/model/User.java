@@ -1,18 +1,19 @@
 package com.apartment.user.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import com.apartment.user.entity.UserKey;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-@SuppressWarnings("deprecation")
 public class User {
 
 	private UserKey userKey;
 
 	@NotNull
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private String userPassword;
 
 	@Email

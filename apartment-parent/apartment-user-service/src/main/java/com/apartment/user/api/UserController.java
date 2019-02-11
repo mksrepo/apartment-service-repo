@@ -42,7 +42,7 @@ public class UserController {
 	/**
 	 * This method is to save User details
 	 * 
-	 * @param details
+	 * @param userDetails
 	 * @return
 	 * @throws UserCustomException
 	 */
@@ -54,13 +54,13 @@ public class UserController {
 		@ApiResponse(code = 500, message = "Internal Server Error", response = UserServiceResponse.class) 
 	})
 	@PostMapping(UserConstants.ENDPOINT_CREATE)
-	public UserServiceResponse createUsers(@Valid @RequestBody User details) throws UserCustomException {
+	public UserServiceResponse createUser(@Valid @RequestBody User userDetails) throws UserCustomException {
 		UserServiceResponse responseBean = new UserServiceResponse();
 		List<User> userList = new ArrayList<>();
-		details = service.createUser(details);
-		if (details != null) {
-			userList.add(details);
-			responseBean.setStatus_Code(AppConstants.STATUS_CODE);
+		userDetails = service.createUser(userDetails);
+		if (userDetails != null) {
+			userList.add(userDetails);
+			responseBean.setStatusCode(AppConstants.STATUS_CODE);
 			responseBean.setMessage(AppConstants.MESSAGE);
 			responseBean.setUserList(userList);
 			logger.info(AppConstants.SUCCESS);
@@ -83,13 +83,13 @@ public class UserController {
 		@ApiResponse(code = 500, message = "Internal Server Error", response = User.class) 
 	})
 	@GetMapping(UserConstants.ENDPOINT_GETUSERS)
-	public List<User> getAllUser() {
+	public List<User> getAllUsers() {
 		List<User> user = service.getAllUsers();
 		if (!user.isEmpty())
 			logger.info(AppConstants.SUCCESS);
 		else {
 			logger.error(AppConstants.ERROR_CODE);
-			throw new UserCustomException("Record is not found");
+			throw new UserCustomException("No user found!");
 		}
 		return user;
 	}
@@ -172,12 +172,12 @@ public class UserController {
 			@PathVariable("password") String password) {
 
 		// Validating user credential
-		User details = service.validateUser(userName, password);
+		User userDetails = service.validateUser(userName, password);
 
 		// Extracting validation info
 		ValidateUserResponseBean validateUserResponse = new ValidateUserResponseBean();
-		if (details != null && !StringUtils.isEmpty(details.getUserRole())) {
-			validateUserResponse = new ValidateUserResponseBean(true, details.getUserRole());
+		if (userDetails != null && !StringUtils.isEmpty(userDetails.getUserRole())) {
+			validateUserResponse = new ValidateUserResponseBean(true, userDetails.getUserRole());
 			validateUserResponse.setUser(service.findByUserName(userName));
 		}
 

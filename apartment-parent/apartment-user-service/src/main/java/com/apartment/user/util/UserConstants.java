@@ -4,12 +4,12 @@ public class UserConstants {
 
 	public static final String USER_ENTITY = "UserEntity";
 
-	public static final String ENDPOINT_CREATE = "/save";
-	public static final String ENDPOINT_GETUSERS = "/getAll";
-	public static final String ENDPOINT_GETDETAILS_BY_USERNAME = "/get/{userName}";
-	public static final String ENDPOINT_DELETE_BY_USERNAME = "/delete/{userName}";
-	public static final String ENDPOINT_UPDATE = "/update";
-	public static final String ENDPOINT_VALIDATION = "/validation/{userName}/{password}";
+	public static final String ENDPOINT_CREATE = "/saveUser";
+	public static final String ENDPOINT_GETUSERS = "/getAllUsers";
+	public static final String ENDPOINT_GETDETAILS_BY_USERNAME = "/getUser/{userName}";
+	public static final String ENDPOINT_DELETE_BY_USERNAME = "/deleteUser/{userName}";
+	public static final String ENDPOINT_UPDATE = "/updateUser";
+	public static final String ENDPOINT_VALIDATION = "/validateUser/{userName}/{password}";
 
 	public static final String USER_PASSWORD = "user_Password";
 	public static final String USER_NAME = "user_Name";
