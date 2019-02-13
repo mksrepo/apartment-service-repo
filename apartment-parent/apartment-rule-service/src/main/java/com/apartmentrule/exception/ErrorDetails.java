@@ -1,0 +1,34 @@
+package com.apartmentrule.exception;
+
+/**
+ * This class give custom Error Message
+ * @author 748152
+ *
+ */
+public class ErrorDetails{
+	
+	private String errorCode;
+	private String errorMsg;
+	public ErrorDetails() {
+		super();
+	}
+	public ErrorDetails(String errorCode, String errorMsg) {
+		super();
+		this.errorCode = errorCode;
+		this.errorMsg = errorMsg;
+	}
+	public String getErrorCode() {
+		return errorCode;
+	}
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+	
+
+}
