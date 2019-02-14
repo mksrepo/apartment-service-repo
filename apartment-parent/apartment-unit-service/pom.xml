@@ -13,7 +13,7 @@
 	</parent>
 
 	<!-- Maven Coordinate -->
-	<artifactId>apartment-user-service</artifactId>
+	<artifactId>apartment-unit-service</artifactId>
 
 	<!-- Packaging Information -->
 	<packaging>jar</packaging>
