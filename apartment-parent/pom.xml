@@ -87,6 +87,8 @@
 		<module>apartment-user-service</module>
 		<module>apartment-library</module>
 		<module>apartment-unit-service</module>
+		<module>apartment-rule-service</module>
+		<module>apartment-api-gateway</module>
 	</modules>
 
 </project>

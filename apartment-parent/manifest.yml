@@ -1,7 +1,8 @@
 applications:
 - name: ams-user-service
   memory: 1G
-  random-route: true
+  routes:
+  - route: ams-user-service-shy-crocodile.cfapps.io
   path: /Users/mrinmaysantra/git/apartment-service-repo/apartment-parent/apartment-user-service/target/apartment-user-service-1.0-SNAPSHOT.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud,mysql
