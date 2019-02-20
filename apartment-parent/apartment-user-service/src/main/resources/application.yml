@@ -1,3 +1,6 @@
+server:
+  port: 0
+
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring:
   datasource:
@@ -6,7 +9,6 @@ spring:
     username: root
     password: password1$
     initialization-mode: always
-
 
 ## Hibernate Properties
 # The SQL dialect makes Hibernate generate better SQL for the chosen database
@@ -18,3 +20,13 @@ spring:
 # Hibernate ddl auto (create, create-drop, validate, update)
     hibernate:
       ddl-auto: update
+      
+# Service Details
+  application:
+    name: apartment-user-service
+      
+# Eureka Configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9999/eureka

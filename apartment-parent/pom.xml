@@ -24,8 +24,11 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.configuration.library.skiptest>true</maven.configuration.library.skiptest>
-		<maven.configuration.userservice.skiptest>true</maven.configuration.userservice.skiptest>
-		<maven.pcf.plugin.testmessage>from Maven World</maven.pcf.plugin.testmessage>
+		<maven.configuration.user.skiptest>true</maven.configuration.user.skiptest>
+		<maven.configuration.gateway.skiptest>true</maven.configuration.gateway.skiptest>
+		<maven.configuration.rule.skiptest>true</maven.configuration.rule.skiptest>
+		<maven.configuration.unit.skiptest>true</maven.configuration.unit.skiptest>
+		<maven.configuration.registry.skiptest>true</maven.configuration.registry.skiptest>
 	</properties>
 
 	<!-- Spring Boot POM configuration -->
@@ -43,12 +46,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<!-- Spring JPA -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
 		<!-- DB Dependency -->
@@ -71,17 +68,6 @@
 		</dependency>
 	</dependencies>
 
-	<!-- Build Information -->
-	<build>
-		<plugins>
-
-			<!-- Maven Spring Boot JAR Builder -->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 	<!-- Module Details -->
 	<modules>
 		<module>apartment-user-service</module>
@@ -89,6 +75,7 @@
 		<module>apartment-unit-service</module>
 		<module>apartment-rule-service</module>
 		<module>apartment-api-gateway</module>
+		<module>apartment-service-registry</module>
 	</modules>
 
 </project>

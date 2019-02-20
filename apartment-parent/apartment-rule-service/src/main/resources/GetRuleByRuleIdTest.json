@@ -1,0 +1,9 @@
+{
+      "ruleId": 1,
+      "apartmentId": "App1",
+      "unitType": "2BHK",
+      "fixedCharge": "200",
+      "perSquarefootCharge": "200",
+      "rentCharge": "0",
+      "effectiveDate": "2019-01-08"
+}
