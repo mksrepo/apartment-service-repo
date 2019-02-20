@@ -10,5 +10,11 @@ spring:
 zuul:
   routes:
     user:
-      path: /user-api/**
+      path: /user/**
       serviceId: apartment-user-service
+    unit:
+      path: /unit/**
+      serviceId: apartment-unit-service
+    rule:
+      path: /rule/**
+      serviceId: apartment-rule-service

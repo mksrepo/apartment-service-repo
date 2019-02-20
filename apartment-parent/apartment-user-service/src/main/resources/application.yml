@@ -1,6 +1,3 @@
-server:
-  port: 0
-
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring:
   datasource:
@@ -30,3 +27,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:9999/eureka
+      
+server:
+  port: 0
+      

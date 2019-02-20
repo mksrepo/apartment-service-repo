@@ -3,4 +3,8 @@ server:
 eureka:
   client:
     register-with-eureka: false
-    fetch-registry: true
+    fetch-registry: false
+    
+spring:
+  application:
+    name: apartment-service-registry

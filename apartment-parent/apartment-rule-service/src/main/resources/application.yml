@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: apartment-rule-service
+  jpa:
+    generate-ddl: true
+    hibernate.ddl-auto: create
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/apartment_db?useSSL=false
+    username: root
+    password: password1$
+    initialization-mode: always
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9999/eureka
+server:
+  port: 0
