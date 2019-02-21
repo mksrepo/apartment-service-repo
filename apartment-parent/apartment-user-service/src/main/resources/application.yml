@@ -1,3 +1,5 @@
+server:
+  port: 0
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring:
   datasource:
@@ -27,7 +29,14 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:9999/eureka
-      
-server:
-  port: 0
-      
+
+# Security Configuration
+security:
+  oauth2:
+    client:
+      grant-type: client_credentials
+      clientId: myclient
+      clientSecret: mysecret
+      access-token-uri: http://localhost:7777/oauth/token
+    resource:
+      userInfoUri: http://localhost:7777/validateUser
