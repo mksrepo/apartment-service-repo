@@ -1,4 +1,5 @@
-## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+server:
+  port: 0
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -8,29 +9,26 @@ spring:
     initialization-mode: always
   application:
     name: apartment-unit-service
-
-
-## Hibernate Properties
-# The SQL dialect makes Hibernate generate better SQL for the chosen database
   jpa:
     show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL57Dialect
-
-# Hibernate ddl auto (create, create-drop, validate, update)
     hibernate:
       ddl-auto: update
-
 logging:
   level:
     root: INFO
-    
-# Eureka Configuration
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:9999/eureka
-      
-server:
-  port: 0
+security:
+  oauth2:
+    client:
+      grant-type: client_credentials
+      clientId: unitclient
+      clientSecret: unitsecret
+      access-token-uri: http://localhost:7777/oauth/token
+    resource:
+      userInfoUri: http://localhost:7777/validateUser

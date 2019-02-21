@@ -30,8 +30,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	}
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("myclient").secret(passwordEncoder().encode("mysecret"))
-				.authorizedGrantTypes("client_credentials").scopes("resource-server-read", "resource-server-write");
+		clients.inMemory()
+			.withClient("userclient").secret(passwordEncoder().encode("usersecret")).authorizedGrantTypes("client_credentials").scopes("resource-server-read", "resource-server-write")
+			.and()
+			.withClient("unitclient").secret(passwordEncoder().encode("unitsecret")).authorizedGrantTypes("client_credentials").scopes("resource-server-read", "resource-server-write")
+			.and()
+			.withClient("ruleclient").secret(passwordEncoder().encode("rulesecret")).authorizedGrantTypes("client_credentials").scopes("resource-server-read", "resource-server-write");
 	}
 	
 }

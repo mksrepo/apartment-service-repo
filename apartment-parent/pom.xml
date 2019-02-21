@@ -76,6 +76,7 @@
 		<module>apartment-rule-service</module>
 		<module>apartment-api-gateway</module>
 		<module>apartment-service-registry</module>
+		<module>apartment-authorization-server</module>
 	</modules>
 
 </project>

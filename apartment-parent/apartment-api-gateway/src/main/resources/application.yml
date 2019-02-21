@@ -18,3 +18,4 @@ zuul:
     rule:
       path: /rule/**
       serviceId: apartment-rule-service
+  sensitiveHeaders: Cookie,Set-Cookie
