@@ -1,0 +1,21 @@
+server:
+  port: 8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9999/eureka
+spring:
+  application:
+    name: apartment-api-gateway
+zuul:
+  routes:
+    user:
+      path: /user/**
+      serviceId: apartment-user-service
+    unit:
+      path: /unit/**
+      serviceId: apartment-unit-service
+    rule:
+      path: /rule/**
+      serviceId: apartment-rule-service
+  sensitiveHeaders: Cookie,Set-Cookie
