@@ -1,0 +1,6 @@
+applications:
+- name: ams-api-gateway
+  memory: 1G
+  path: C:\Users\264030\git\apartment-service-repo\apartment-parent\apartment-api-gateway\target\apartment-api-gateway-1.0-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud,mysql

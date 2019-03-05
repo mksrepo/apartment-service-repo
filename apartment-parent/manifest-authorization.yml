@@ -1,0 +1,6 @@
+applications:
+- name: ams-authorization-server
+  memory: 1G
+  path: C:\Users\264030\git\apartment-service-repo\apartment-parent\apartment-authorization-server\target\apartment-authorization-server-1.0-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud,mysql

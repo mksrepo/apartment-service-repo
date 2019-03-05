@@ -1,0 +1,10 @@
+applications:
+- name: ams-user-service
+  memory: 512M
+  routes:
+  - route: ams-user-service-shy-crocodile.cfapps.io
+  path: C:\Users\264030\git\apartment-service-repo\apartment-parent\apartment-user-service\target\apartment-user-service-1.0-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud,mysql
+  services:
+  - ams-mysql-user-service

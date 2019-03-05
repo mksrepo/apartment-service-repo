@@ -1,0 +1,6 @@
+applications:
+- name: ams-service-registry
+  memory: 1G
+  path: C:\Users\264030\git\apartment-service-repo\apartment-parent\apartment-service-registry\target\apartment-service-registry-1.0-SNAPSHOT.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud,mysql

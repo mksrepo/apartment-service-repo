@@ -1,9 +1,23 @@
+OAUTH2 URLS
+-----------
 Access-Token URL : http://localhost:7777/oauth/token
 
+SERVICE NAME
+------------
 apartment-user-service - userclient:usersecret
 apartment-unit-service - unitclient:unitsecret
 apartment-rule-service - ruleclient:rulesecret
 
+SERVICE URL
+-----------
 apartment-service-registry : 9999
 apartment-api-gateway : 8888
 apartment-authorization-server : 7777
+
+
+DEPLOYMENT SCRIPT
+-----------------
+cf push -f manifest-registry.yml
+cf push -f manifest-gateway.yml
+cf push -f manifest-authorization.yml
+cf push -f manifest-user.yml
