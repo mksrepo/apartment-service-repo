@@ -2,6 +2,7 @@ package com.apartment.user.api;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -84,14 +85,13 @@ public class UserController {
 	})
 	@GetMapping(UserConstants.ENDPOINT_GETUSERS)
 	public List<User> getAllUsers() {
-		List<User> user = service.getAllUsers();
-		if (!user.isEmpty())
+		Optional<List<User>> users = service.getAllUsers();
+		if (users.isPresent()) {
 			logger.info(AppConstants.SUCCESS);
-		else {
-			logger.error(AppConstants.ERROR_CODE);
-			throw new UserCustomException("No user found!");
+			return users.get();
 		}
-		return user;
+		logger.error(AppConstants.ERROR_CODE);
+		throw new UserCustomException("No user found!");
 	}
 
 	/**

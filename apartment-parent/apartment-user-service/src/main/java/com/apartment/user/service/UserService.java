@@ -1,6 +1,7 @@
 package com.apartment.user.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.apartment.user.model.User;
 
@@ -20,7 +21,7 @@ public interface UserService {
 	 * 
 	 * @return List<UserModelBean> modelList
 	 */
-	public List<User> getAllUsers();
+	public Optional<List<User>> getAllUsers();
 
 	/**
 	 * Method to delete user record by id

@@ -1,8 +1,9 @@
 package com.apartment.user.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.apartment.user.entity.UserEntity;
 import com.apartment.user.model.User;
 import com.apartment.user.repository.UserRepository;
+import com.apartment.user.util.UserMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -29,16 +31,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getAllUsers() {
-		List<User> list = new ArrayList<>();
-		ObjectMapper mapper = new ObjectMapper();
-		for (UserEntity temp : userRepo.findAll()) {
-			User details = mapper.convertValue(temp, User.class);
-			list.add(details);
-
-		}
-		return list;
-
+	public Optional<List<User>> getAllUsers() {
+		return Optional.ofNullable(userRepo.findAll().stream().map(UserMapper::entityToDto).collect(Collectors.toList()));
 	}
 
 	@Transactional
