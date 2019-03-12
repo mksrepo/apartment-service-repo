@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.apartment.user.entity.UserEntity;
 import com.apartment.user.model.User;
 import com.apartment.user.repository.UserRepository;
 import com.apartment.user.util.UserMapper;
@@ -23,11 +22,8 @@ public class UserServiceImpl implements UserService {
 	UserRepository userRepo;
 
 	@Override
-	public User createUser(User userDetails) {
-		ObjectMapper mapper = new ObjectMapper();
-		UserEntity userModel = mapper.convertValue(userDetails, UserEntity.class);
-		return mapper.convertValue(userRepo.save(userModel), User.class);
-
+	public User createUser(User user) {
+		return UserMapper.entityToDto(userRepo.save(UserMapper.dtoToEntity(user)));
 	}
 
 	@Override

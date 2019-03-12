@@ -9,4 +9,8 @@ public class UserMapper {
 	public static User entityToDto(UserEntity entity) {
 		return new ObjectMapper().convertValue(entity, User.class);
 	}
+
+	public static UserEntity dtoToEntity(User user) {
+		return new ObjectMapper().convertValue(user, UserEntity.class);
+	}
 }

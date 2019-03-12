@@ -13,6 +13,7 @@ public interface UserService {
 	 * @param User
 	 *            userDetails
 	 * @return UserModelBean userModelBean
+	 * @throws Exception 
 	 */
 	public User createUser(User userDetails);
 

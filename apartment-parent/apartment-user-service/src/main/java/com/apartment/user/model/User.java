@@ -4,12 +4,16 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.apartment.user.entity.UserKey;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-public class User {
+public class User implements AutoCloseable{
 
+	private static final Logger logger = LoggerFactory.getLogger(User.class);
 	private UserKey userKey;
 
 	@NotNull
@@ -78,6 +82,11 @@ public class User {
 	public String toString() {
 		return "UserModelDetails [userkey=" + userKey + ", userPassword=" + userPassword + ", userEmail=" + userEmail
 				+ ", userMobile=" + userMobile + ", userRole=" + userRole + "]";
+	}
+
+	@Override
+	public void close() throws Exception {
+		logger.error("Internal Exception :: Occured in User manipulation.");
 	}
 
 }

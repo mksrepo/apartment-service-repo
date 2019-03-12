@@ -1,6 +1,7 @@
 package com.apartment.user.api;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,20 +57,16 @@ public class UserController {
 	})
 	@PostMapping(UserConstants.ENDPOINT_CREATE)
 	public UserServiceResponse createUser(@Valid @RequestBody User userDetails) throws UserCustomException {
-		UserServiceResponse responseBean = new UserServiceResponse();
-		List<User> userList = new ArrayList<>();
-		userDetails = service.createUser(userDetails);
-		if (userDetails != null) {
-			userList.add(userDetails);
-			responseBean.setStatusCode(AppConstants.STATUS_CODE);
-			responseBean.setMessage(AppConstants.MESSAGE);
-			responseBean.setUserList(userList);
+		try (User user = service.createUser(userDetails)) {
 			logger.info(AppConstants.SUCCESS);
-		} else {
+			return new UserServiceResponse(
+					AppConstants.STATUS_CODE,
+					AppConstants.MESSAGE,
+					new ArrayList<User>(Arrays.asList(user)));
+		} catch (Exception exception) {
 			logger.error(AppConstants.ERROR_CODE);
 			throw new UserCustomException("Record is not found");
 		}
-		return responseBean;
 	}
 
 	/**
