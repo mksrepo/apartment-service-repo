@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apartment.user.exception.UserCustomException;
@@ -34,12 +33,12 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("userservice")
 public class UserController {
 
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	UserService service;
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	/**
 	 * This method is to save User details
@@ -56,7 +55,7 @@ public class UserController {
 		@ApiResponse(code = 500, message = "Internal Server Error", response = UserServiceResponse.class) 
 	})
 	@PostMapping(UserConstants.ENDPOINT_CREATE)
-	public UserServiceResponse createUser(@Valid @RequestBody User userDetails) throws UserCustomException {
+	public UserServiceResponse createUser(@Valid @RequestBody User userDetails) throws Exception {
 		try (User user = service.createUser(userDetails)) {
 			logger.info(AppConstants.SUCCESS);
 			return new UserServiceResponse(
@@ -108,11 +107,9 @@ public class UserController {
 	@GetMapping(UserConstants.ENDPOINT_GETDETAILS_BY_USERNAME)
 	public ResponseEntity<User> getUserByUserName(@PathVariable("userName") String userName)
 			throws UserCustomException {
-		User details = service.findByUserName(userName);
-		if (details == null) {
-			throw new UserCustomException(AppConstants.ERROR_CODE);
-		}
-		return new ResponseEntity<User>(details, HttpStatus.OK);
+		Optional<User> optionalUser = service.findByUserName(userName);
+		if (optionalUser.isPresent())  return new ResponseEntity<User>(optionalUser.get(), HttpStatus.OK);
+		throw new UserCustomException(AppConstants.ERROR_CODE);
 	}
 
 	/**
@@ -175,7 +172,7 @@ public class UserController {
 		ValidateUserResponseBean validateUserResponse = new ValidateUserResponseBean();
 		if (userDetails != null && !StringUtils.isEmpty(userDetails.getUserRole())) {
 			validateUserResponse = new ValidateUserResponseBean(true, userDetails.getUserRole());
-			validateUserResponse.setUser(service.findByUserName(userName));
+			validateUserResponse.setUser(service.findByUserName(userName).get());
 		}
 
 		// Returning response
