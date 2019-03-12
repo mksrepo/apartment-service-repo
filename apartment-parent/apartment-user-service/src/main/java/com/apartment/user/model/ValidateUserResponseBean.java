@@ -29,8 +29,9 @@ public class ValidateUserResponseBean {
 		this.userRole = userRole;
 	}
 
-	public ValidateUserResponseBean(boolean isValid, String userRole) {
+	public ValidateUserResponseBean(User user, boolean isValid, String userRole) {
 		super();
+		this.user = user;
 		this.isValid = isValid;
 		this.userRole = userRole;
 	}
