@@ -129,7 +129,8 @@ public class UserController {
 	@PutMapping(UserConstants.ENDPOINT_DELETE_BY_USERNAME)
 	public String delete(@PathVariable("userName") String userName) {
 		service.deleteUserByUserName(userName);
-		return "User Deleted";
+		logger.info(AppConstants.SUCCESS);
+		return "The User" + userName + " has been deleted.";
 	}
 
 	/**
@@ -144,9 +145,10 @@ public class UserController {
 		@ApiResponse(code = 500, message = "Internal Server Error", response = User.class) 
 	})
 	@PutMapping(UserConstants.ENDPOINT_UPDATE)
-	public void updateUser(@RequestBody User userBean) {
+	public String updateUser(@RequestBody User userBean) {
 		service.updateUser(userBean);
 		logger.info(AppConstants.SUCCESS);
+		return "The User" + userBean.getUserKey().getUserName() + " has been upadted.";
 	}
 
 	/**
@@ -164,20 +166,12 @@ public class UserController {
 	@PostMapping(UserConstants.ENDPOINT_VALIDATION)
 	public ResponseEntity<ValidateUserResponseBean> validateUser(@PathVariable("userName") String userName,
 			@PathVariable("password") String password) {
-
-		// Validating user credential
-		User userDetails = service.validateUser(userName, password);
-
-		// Extracting validation info
-		ValidateUserResponseBean validateUserResponse = new ValidateUserResponseBean();
-		if (userDetails != null && !StringUtils.isEmpty(userDetails.getUserRole())) {
-			validateUserResponse = new ValidateUserResponseBean(true, userDetails.getUserRole());
-			validateUserResponse.setUser(service.findByUserName(userName).get());
-		}
-
-		// Returning response
-		return new ResponseEntity<ValidateUserResponseBean>(validateUserResponse, HttpStatus.OK);
-
+		Optional<User> optionalUser = service.validateUser(userName, password);
+		if (optionalUser.isPresent())
+			return new ResponseEntity<ValidateUserResponseBean>(
+					new ValidateUserResponseBean(optionalUser.get(), true, optionalUser.get().getUserRole()),
+					HttpStatus.OK);
+		throw new UserCustomException(AppConstants.ERROR_CODE);
 	}
 
 }
