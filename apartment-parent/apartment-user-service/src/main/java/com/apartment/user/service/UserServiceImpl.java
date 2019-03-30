@@ -47,17 +47,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findByUserName(String userName) {
+	public Optional<User> findByUserName(String userName) {
 		ObjectMapper mapper = new ObjectMapper();
 		User details = mapper.convertValue(userRepo.findOne(userName), User.class);
-		return details;
+		return Optional.of(details);
 	}
 
 	@Override
-	public User validateUser(String userName, String password) {
+	public Optional<User> validateUser(String userName, String password) {
 		ObjectMapper mapper = new ObjectMapper();
 		User details = mapper.convertValue(userRepo.findByCredential(userName, password), User.class);
-		return details;
+		return Optional.of(details);
 
 	}
 

@@ -49,13 +49,13 @@ public interface UserService {
 	 *            userId
 	 * @return UserModelBean userModelBean
 	 */
-	public User findByUserName(String userName);
+	public Optional<User> findByUserName(String userName);
 
 	/**
 	 * @param userId
 	 * @param password
 	 * @return
 	 */
-	public User validateUser(String userName, String password);
+	public Optional<User> validateUser(String userName, String password);
 
 }
